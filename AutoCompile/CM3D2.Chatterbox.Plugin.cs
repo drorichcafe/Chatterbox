@@ -6,7 +6,7 @@ using UnityInjector.Attributes;
 
 namespace CM3D2.Chatterbox
 {
-	[PluginFilter("CM3D2x64"), PluginFilter("CM3D2x86"), PluginName("Chatterbox"), PluginVersion("0.0.0.0")]
+	[PluginFilter("CM3D2x64"), PluginFilter("CM3D2x86"), PluginName("Chatterbox"), PluginVersion("0.0.0.1")]
 	public class Chatterbox : PluginBase
 	{
 		public bool enable = false;
@@ -31,7 +31,7 @@ namespace CM3D2.Chatterbox
 
 		public void Update()
 		{
-			if (!enable) return;
+			if (GameMain.Instance.CharacterMgr.IsBusy() || !enable) return;
 
 			for (int i = 0; i < GameMain.Instance.CharacterMgr.GetMaidCount() - 1; ++i)
 			{
